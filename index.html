@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tiya</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        background: #6e5b5b;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+    }
+
+    .poster {
+        width: 402px;
+        height: 874px;
+        background: #ffffff;
+        position: relative;
+        overflow: hidden;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Logo */
+    .logo {
+        position: absolute;
+        top: -25px;
+        right: 80px;
+        z-index: 2;
+    }
+
+    .logo img {
+        width: 245px;
+        height: auto;
+        filter:
+            drop-shadow(0 5px 5px rgba(0, 0, 0, 0.25)) drop-shadow(0 12px 20px rgba(0, 0, 0, 0.35));
+
+    }
+
+    /* Heading */
+    .heading {
+        position: absolute;
+        top: 120px;
+        left: 20px;
+        z-index: 2;
+    }
+
+    .heading h1 {
+        font-size: 52px;
+        line-height: 0.95;
+        font-weight: 900;
+        color: #000;
+        text-transform: uppercase;
+    }
+
+    .heading span {
+        color: #e60012;
+    }
+
+    /* Content */
+    .content {
+        position: absolute;
+        top: 360px;
+        left: 20px;
+        width: 180px;
+        z-index: 2;
+    }
+
+    .content p {
+        font-size: 22px;
+        line-height: 1.4;
+        color: #333;
+        font-weight: 500;
+    }
+
+    /* Buttons */
+    .btn {
+        position: absolute;
+        top: 580px;
+        left: 95px;
+
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+
+        width: 200px;
+        z-index: 10;
+    }
+
+    .btn a {
+        position: relative;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        text-decoration: none;
+        color: #fff;
+
+        padding: 14px;
+        border-radius: 14px;
+
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: 0px;
+
+        background: linear-gradient(90deg,
+                #16a34a 0%,
+                #0f9f6e 45%,
+                #1d4ed8 100%);
+
+        border: 1px solid rgba(255, 255, 255, 0.25);
+
+        box-shadow:
+            0 8px 20px rgba(0, 0, 0, .30),
+            inset 0 1px 1px rgba(255, 255, 255, .35);
+
+        overflow: hidden;
+        transition: all .3s ease;
+    }
+
+    /* Shine Effect */
+    .btn a::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -120%;
+
+        width: 50%;
+        height: 100%;
+
+        background: linear-gradient(90deg,
+                transparent,
+                rgba(255, 255, 255, .35),
+                transparent);
+
+        transform: skewX(-25deg);
+        transition: .6s;
+    }
+
+    .btn a:hover::before {
+        left: 130%;
+    }
+
+    /* Arrow */
+    .btn a::after {
+        content: "❯";
+        position: absolute;
+        right: 16px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .btn a:hover {
+        transform: translateY(-3px);
+
+        background: linear-gradient(90deg,
+                #22c55e 0%,
+                #14b8a6 50%,
+                #2563eb 100%);
+
+        box-shadow:
+            0 12px 30px rgba(0, 0, 0, .35);
+    }
+
+
+    /* Book Image */
+    .book {
+        position: absolute;
+        right: -40px;
+        bottom: 0;
+        width: 280px;
+    }
+
+    .book img {
+        width: 100%;
+        display: block;
+    }
+
+    /* Background Decoration */
+    .poster::before {
+        content: "";
+        position: absolute;
+        width: 350px;
+        height: 350px;
+        background: rgba(2, 144, 69, 0.08);
+        border-radius: 50%;
+        top: -120px;
+        right: -120px;
+    }
+
+    .poster::after {
+        content: "";
+        position: absolute;
+        width: 280px;
+        height: 280px;
+        background: rgba(230, 0, 18, 0.05);
+        border-radius: 50%;
+        bottom: -120px;
+        left: -120px;
+    }
+
+    .img {
+        text-align: center;
+        margin-top: 60px;
+        margin-top: 0;
+        padding-top: 0;
+
+    }
+
+    .img img {
+        width: 405px;
+        /* max-width:100%; */
+        height: auto;
+        filter: drop-shadow(0 15px 30px rgba(0, 153, 68, .25));
+        TOP: 10PX
+    }
+
+    /* Responsive */
+    @media (max-width: 420px) {
+
+        .poster {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 402/874;
+        }
+
+        .logo {
+            right: 50%;
+            transform: translateX(50%);
+        }
+
+        .logo img {
+            width: 45vw;
+        }
+
+        .heading {
+            top: 28%;
+        }
+
+        .heading h1 {
+            font-size: 12vw;
+        }
+
+        .content {
+            width: 45%;
+            top: 42%;
+        }
+
+        .content p {
+            font-size: 4vw;
+        }
+
+        .btn {
+            width: 42%;
+            top: 70%;
+        }
+
+        .btn a {
+            font-size: 3.5vw;
+            padding: 10px;
+        }
+
+        .book {
+            width: 68%;
+        }
+    }
+</style>
+
+<body>
+
+    <div class="poster">
+
+        <!-- Logo -->
+        <div class="logo">
+            <img src="../New folder (2)/image/TYA LOGO.3.png" alt="TIYA Logo">
+        </div>
+        <div Class="img">
+            <img src="../New folder (2)/image/ChatGPT Image Jul 7, 2026, 04_37_04 PM.png" alt="TIYA">
+        </div>
+        <!-- Button -->
+        <div class="btn">
+            <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSfckaGyBO49taDBu7P3KZFZCywtnjAOC-b3iGOKmSNcTbXkZA/viewform?usp=dialog">FRUITS</a>
+            <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSdqweoFyHlRqeQz1s_Tfcmw9787c7VRP_34nnML91ySNwcDlQ/viewform?usp=publish-editor">VEGETABLES</a>
+            <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSfwNKo2v0KxR1rxXnR4iIdukReblO7tT0xWFxR-2H_wfGqAtw/viewform?usp=publish-editor">NON
+                PERISHABLE</a>
+            <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSfJv-j7NXxRUib0hqJsx_Ifkql5pXDqgqeoLwQy48ge1n6LPw/viewform?usp=publish-editor">SPICES</a>
+        </div>
+
+        <!-- Book + Chart Image -->
+
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            // Fade In Animation
+            document.querySelector(".poster").style.opacity = "0";
+            document.querySelector(".poster").style.transform = "scale(.95)";
+
+            setTimeout(() => {
+                document.querySelector(".poster").style.transition = "all .8s ease";
+                document.querySelector(".poster").style.opacity = "1";
+                document.querySelector(".poster").style.transform = "scale(1)";
+            }, 100);
+
+            // Button Animation
+            const buttons = document.querySelectorAll(".btn a");
+
+            buttons.forEach((btn, index) => {
+
+                btn.style.opacity = "0";
+                btn.style.transform = "translateY(30px)";
+
+                setTimeout(() => {
+                    btn.style.transition = "all .5s ease";
+                    btn.style.opacity = "1";
+                    btn.style.transform = "translateY(0)";
+                }, 300 + (index * 150));
+
+                // Click Effect
+                btn.addEventListener("click", function () {
+
+                    this.style.transform = "scale(.95)";
+
+                    setTimeout(() => {
+                        this.style.transform = "scale(1)";
+                    }, 150);
+
+                });
+
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>
